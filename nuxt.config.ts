@@ -122,14 +122,26 @@ export default defineNuxtConfig({
   },
 
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
     componentDir: './app/components/ui',
   },
+
+  components: {
+    dirs: [
+      {
+        path: '~/app/components',
+        pathPrefix: false,
+        ignore: ['vite/modulepreload-polyfill.js']
+      }
+    ]
+  },
+
+  vite: {
+    optimizeDeps: {
+      exclude: ['vite/modulepreload-polyfill']
+    },
+    ssr: {
+      noExternal: ['vite']
+    }
+  }
 })

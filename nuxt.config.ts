@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
   ],
+  components: false,
 
   devtools: { enabled: true },
 
@@ -137,11 +138,16 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    optimizeDeps: {
-      exclude: ['vite/modulepreload-polyfill']
-    },
-    ssr: {
-      noExternal: ['vite']
+  resolve: {
+    alias: {
+      'vite/modulepreload-polyfill.js': false
     }
+  },
+  optimizeDeps: {
+    exclude: ['vite/modulepreload-polyfill']
+  },
+  ssr: {
+    noExternal: ['vite']
   }
+}
 })

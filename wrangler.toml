@@ -1,0 +1,6 @@
+name = "sink-link-shortener"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "62a38ea5810b4aa687b5d04e9a859a30"

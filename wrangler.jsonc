@@ -22,4 +22,4 @@
   }
 }
 // This file is used to configure the Cloudflare Workers environment for the Nuxt.js application.
-// It specifies the name of the worker, the main entry point, compatibility date, routes, KV namespaces, and environment variables.
+// It specifies the name of the worker, the main entry point, compatibility date, routes, KV namespaces, and environment variables...

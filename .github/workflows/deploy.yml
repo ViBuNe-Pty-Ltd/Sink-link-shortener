@@ -1,0 +1,37 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main # Or 'master', whichever is your primary branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Using a recent LTS version of Node.js
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create .env file for build process
+        run: echo "NUXT_SITE_TOKEN=${{ secrets.NUXT_SITE_TOKEN }}" > .env
+
+      - name: Build the Project
+        run: npm run build
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # This command ensures your worker has the secret token available at runtime
+          secrets: |
+            NUXT_SITE_TOKEN

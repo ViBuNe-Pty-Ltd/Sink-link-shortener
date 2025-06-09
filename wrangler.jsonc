@@ -1,31 +1,25 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sink",
-  "main": "dist/server/index.mjs",
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "dist/public"
-  },
-  "compatibility_date": "2025-05-08",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "keep_vars": true,
-  "upload_source_maps": true,
-  "ai": {
-    "binding": "AI"
-  },
-  "analytics_engine_datasets": [
-    {
-      "binding": "ANALYTICS_ENGINE",
-      "dataset": "analytics_events"
-    }
-  ],
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2024-03-21",
+  "routes": ["ihaz.link/*"],
   "kv_namespaces": [
     {
       "binding": "KV",
-      "id": "62a38ea5810b4aa687b5d04e9a859a30" // IMPORTANT: Change this to your KV namespace ID
+      "id": "62a38ea5810b4aa687b5d04e9a859a30"
     }
   ],
-  "routes": ["ihaz.link/*"]
+  "site": {
+    "bucket": "./.output/public"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "NUXT_HUB_URL": "https://hub.nuxt.com",
+        "NUXT_HUB_PROJECT_URL": "https://hub.nuxt.com/_/projects/sink"
+      }
+    }
+  }
 }
+// This file is used to configure the Cloudflare Workers environment for the Nuxt.js application.
+// It specifies the name of the worker, the main entry point, compatibility date, routes, KV namespaces, and environment variables.

@@ -15,23 +15,25 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        # The 'version' key is removed. The action will now automatically
-        # use the version specified in the 'packageManager' field of package.json.
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # Use pnpm for caching
+          cache: 'pnpm'
 
       - name: Install Dependencies
-        run: pnpm install # Use pnpm to install
+        run: pnpm install
 
       - name: Create .env file for build process
         run: echo "NUXT_SITE_TOKEN=${{ secrets.NUXT_SITE_TOKEN }}" > .env
 
       - name: Build the Project
-        run: pnpm run build # Use the build script from your package.json
+        run: pnpm run build
+
+      # This new step will list all files and folders to help us debug the build output.
+      - name: List build output
+        run: ls -R
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3

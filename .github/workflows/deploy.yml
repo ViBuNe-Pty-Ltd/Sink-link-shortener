@@ -15,8 +15,8 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10 # Use the major version from your package.json
+        # The 'version' key is removed. The action will now automatically
+        # use the version specified in the 'packageManager' field of package.json.
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,8 +31,7 @@ jobs:
         run: echo "NUXT_SITE_TOKEN=${{ secrets.NUXT_SITE_TOKEN }}" > .env
 
       - name: Build the Project
-        # Use the build script from your package.json
-        run: pnpm run build
+        run: pnpm run build # Use the build script from your package.json
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3

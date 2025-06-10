@@ -106,7 +106,8 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    locales: currentlocales,
+    // Corrected from 'currentlocales' to 'currentLocales' to match the import
+    locales: currentLocales,
     compilation: {
       strictMessage: false,
       escapeHtml: true,
@@ -126,8 +127,4 @@ export default defineNuxtConfig({
     prefix: '',
     componentDir: './app/components/ui',
   },
-
-  // The 'components' and 'vite' sections that were here have been removed
-  // as they were attempting to patch a problem caused by using the wrong package manager.
-  // Nuxt's default behavior is sufficient when dependencies are installed correctly.
 })

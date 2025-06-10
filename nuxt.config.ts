@@ -106,7 +106,7 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    locales: currentLocales,
+    locales: currentlocales,
     compilation: {
       strictMessage: false,
       escapeHtml: true,
@@ -127,27 +127,7 @@ export default defineNuxtConfig({
     componentDir: './app/components/ui',
   },
 
-  components: {
-    dirs: [
-      {
-        path: '~/app/components',
-        pathPrefix: false,
-        ignore: ['vite/modulepreload-polyfill.js']
-      }
-    ]
-  },
-
-  vite: {
-  resolve: {
-    alias: {
-      'vite/modulepreload-polyfill.js': false
-    }
-  },
-  optimizeDeps: {
-    exclude: ['vite/modulepreload-polyfill']
-  },
-  ssr: {
-    noExternal: ['vite']
-  }
-}
+  // The 'components' and 'vite' sections that were here have been removed
+  // as they were attempting to patch a problem caused by using the wrong package manager.
+  // Nuxt's default behavior is sufficient when dependencies are installed correctly.
 })

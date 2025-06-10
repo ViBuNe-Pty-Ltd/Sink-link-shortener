@@ -13,30 +13,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10 # Use the major version from your package.json
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'pnpm' # Use pnpm for caching
 
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install # Use pnpm to install
 
       - name: Create .env file for build process
-        # This step is for the Nuxt build process itself
         run: echo "NUXT_SITE_TOKEN=${{ secrets.NUXT_SITE_TOKEN }}" > .env
 
       - name: Build the Project
-        run: npm run build
+        # Use the build script from your package.json
+        run: pnpm run build
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # This command tells wrangler which environment variables to upload as secrets.
           secrets: |
             NUXT_SITE_TOKEN
-        # This 'env' block makes the GitHub secret available as an environment variable
-        # FOR THIS STEP, so the 'secrets' key above can find it.
         env:
           NUXT_SITE_TOKEN: ${{ secrets.NUXT_SITE_TOKEN }}

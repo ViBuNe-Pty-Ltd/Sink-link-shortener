@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches:
-      - master # Or 'master', whichever is your primary branch
+      - master # Triggers the workflow on push to the master branch
 
 jobs:
   deploy:
@@ -16,12 +16,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Using a recent LTS version of Node.js
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Create .env file for build process
+        # This step is for the Nuxt build process itself
         run: echo "NUXT_SITE_TOKEN=${{ secrets.NUXT_SITE_TOKEN }}" > .env
 
       - name: Build the Project
@@ -32,6 +33,10 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # This command ensures your worker has the secret token available at runtime
+          # This command tells wrangler which environment variables to upload as secrets.
           secrets: |
             NUXT_SITE_TOKEN
+        # This 'env' block makes the GitHub secret available as an environment variable
+        # FOR THIS STEP, so the 'secrets' key above can find it.
+        env:
+          NUXT_SITE_TOKEN: ${{ secrets.NUXT_SITE_TOKEN }}

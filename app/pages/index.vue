@@ -67,7 +67,7 @@
 
     <!-- Footer -->
     <footer class="container mx-auto px-6 py-8 text-center text-gray-500">
-      <p>&copy; {{ new Date().getFullYear() }} ihaz.link. All rights reserved.</p>
+      <p>&copy; {{ new Date().getFullYear() }} ==//== </p>
     </footer>
   </div>
 </template>

@@ -3,6 +3,10 @@
   // Correct the main entrypoint to point to the 'dist' folder
   "main": "./dist/server/index.mjs",
   "compatibility_date": "2024-05-08",
+  // This flag enables Node.js compatibility in the Cloudflare environment
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "routes": [
     "ihaz.link/*"
   ],

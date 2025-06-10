@@ -1,6 +1,7 @@
 {
   "name": "sink",
-  "main": "./.output/server/index.mjs",
+  // Correct the main entrypoint to point to the 'dist' folder
+  "main": "./dist/server/index.mjs",
   "compatibility_date": "2024-05-08",
   "routes": [
     "ihaz.link/*"
@@ -11,8 +12,9 @@
       "id": "62a38ea5810b4aa687b5d04e9a859a30"
     }
   ],
+  // Correct the site bucket to point to the 'dist' folder
   "site": {
-    "bucket": "./.output/public"
+    "bucket": "./dist/public"
   },
   "env": {
     "production": {

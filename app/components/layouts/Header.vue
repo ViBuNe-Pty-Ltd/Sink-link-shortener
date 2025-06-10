@@ -22,7 +22,7 @@ const { title, github } = useAppConfig()
               class="flex items-center justify-center w-8 h-8 rounded-full"
             >
               <img
-                src="https://vibune.com/wp-content/uploads/2024/11/applogo.png"
+                src="https://vibune.com/wp-content/uploads/2021/09/cropped-logoonly.png"
                 :alt="title"
                 class="w-full h-full rounded-full"
               >
@@ -48,7 +48,7 @@ const { title, github } = useAppConfig()
                 class="flex items-center justify-center w-8 h-8 text-white bg-gray-900 rounded-full"
               >
                 <img
-                  src="https://vibune.com/wp-content/uploads/2023/04/digital-infusion-logo-white.png"
+                  src="https://vibune.com/wp-content/uploads/2021/09/cropped-logoonly.png"
                   :alt="title"
                   class="w-full h-full rounded-full"
                 >

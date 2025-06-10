@@ -14,7 +14,7 @@ const { title, email, telegram, blog, twitter, mastodon, github } = useAppConfig
       >{{ title }}</a>
       <a
         class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0"
-        href="https://vibune.net
+        href="https://vibune.net"
         target="_blank"
         title="ViBuNe.NET"
       >

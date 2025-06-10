@@ -12,7 +12,9 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
   ],
-  components: false,
+  // This was previously set to false. The original project has it enabled by default,
+  // letting Nuxt auto-discover components. This is the correct setting.
+  components: true,
 
   devtools: { enabled: true },
 
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    siteToken: 'SinkCool',
+    siteToken: 'I#azlinkRock5',
     redirectStatusCode: '301',
     linkCacheTtl: 60,
     redirectWithQuery: false,
@@ -106,7 +108,6 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    // Corrected from 'currentlocales' to 'currentLocales' to match the import
     locales: currentLocales,
     compilation: {
       strictMessage: false,

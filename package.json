@@ -14,7 +14,7 @@
     "build:colo": "node scripts/build-colo.js",
     "preview": "wrangler pages dev dist",
     "deploy": "wrangler pages deploy dist",
-    "postinstall": "npm run build:map && nuxt prepare",
+    "postinstall": "pnpm run build:map && nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "nuxt typecheck",
@@ -71,7 +71,7 @@
     "wrangler": "^4.16.1"
   },
   "simple-git-hooks": {
-    "pre-commit": "npm run lint-staged"
+    "pre-commit": "pnpm run lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [

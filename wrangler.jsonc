@@ -1,25 +1,33 @@
 {
   "name": "sink",
+  // This 'main' entrypoint MUST point to the server file inside the '.output' directory.
   "main": "./.output/server/index.mjs",
-  "compatibility_date": "2024-03-21",
-  "routes": ["ihaz.link/*"],
+  "compatibility_date": "2024-05-08",
+  "routes": [
+    "ihaz.link/*"
+  ],
   "kv_namespaces": [
     {
       "binding": "KV",
       "id": "62a38ea5810b4aa687b5d04e9a859a30"
     }
   ],
+  // The 'site.bucket' property tells Wrangler where to find the static assets
+  // (HTML, CSS, JS) for your site. This MUST be the '.output/public' directory.
   "site": {
     "bucket": "./.output/public"
   },
   "env": {
     "production": {
       "vars": {
+        // These are default variables from the project, they are fine to leave as is.
         "NUXT_HUB_URL": "https://hub.nuxt.com",
         "NUXT_HUB_PROJECT_URL": "https://hub.nuxt.com/_/projects/sink"
       }
     }
   }
+}
+
 }
 // This file is used to configure the Cloudflare Workers environment for the Nuxt.js application.
 // It specifies the name of the worker, the main entry point, compatibility date, routes, KV namespaces, and environment variables...
